@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".MainActivity">
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="vertical">
+
+       <EditText
+           android:id="@+id/et_name"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:hint="@string/enter_your_name"
+           android:textSize="20sp"
+           android:inputType="text"
+           android:textColor="@android:color/black"
+           android:importantForAutofill="no" />
+
+       <EditText
+           android:id="@+id/et_age"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:hint="@string/enter_your_age"
+           android:textSize="20sp"
+           android:inputType="number"
+           android:textColor="@android:color/black"
+           android:importantForAutofill="no" />
+
+       <EditText
+           android:id="@+id/et_mobileNumber"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:hint="@string/enter_your_mobile_number"
+           android:textSize="20sp"
+           android:inputType="number"
+           android:maxLength="10"
+           android:textColor="@android:color/black"
+           android:importantForAutofill="no" />
+
+       <EditText
+           android:id="@+id/et_emailId"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:hint="@string/enter_your_email_id"
+           android:textSize="20sp"
+           android:inputType="textEmailAddress"
+           android:textColor="@android:color/black"
+           android:importantForAutofill="no" />
+
+   </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/submit"
+        android:textSize="20sp"
+        android:layout_alignParentBottom="true"/>
+
+</RelativeLayout>
