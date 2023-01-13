@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -24,16 +25,12 @@ class MainActivity : AppCompatActivity() {
     private lateinit var etMobileNumber: EditText
     private lateinit var etEmailId: EditText
     private lateinit var btnSubmit: Button
-    private lateinit var userAdapter: UserAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
-        userViewModel.getAllUserData(applicationContext)?.observe(this, Observer {
-            userAdapter.setData(it as ArrayList<User>)
-        })
 
         etName = findViewById(R.id.et_name)
         etAge = findViewById(R.id.et_age)
@@ -43,8 +40,6 @@ class MainActivity : AppCompatActivity() {
 
         btnSubmit.setOnClickListener {
             saveDataInRoomDB()
-            val intent = Intent(this, SecondActivity::class.java)
-            startActivity(intent)
         }
     }
 
@@ -57,11 +52,21 @@ class MainActivity : AppCompatActivity() {
         if (!TextUtils.isEmpty(mName) && !TextUtils.isEmpty(mAge)
             && !TextUtils.isEmpty(mMobileNumber) && !TextUtils.isEmpty(mEmailId)){
 
-            userViewModel.insert(this, User(mName,Integer.parseInt(mAge),Integer.parseInt(mMobileNumber),mEmailId))
-            Toast.makeText(this, "Data Saved Successfuly", Toast.LENGTH_SHORT).show()
+            userViewModel.insert(this, User(mName,Integer.parseInt(mAge),mMobileNumber,mEmailId))
+            Toast.makeText(this, "Data Saved Successfully", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, SecondActivity::class.java)
+            startActivity(intent)
+            clearCredentials()
 
         }else{
             Toast.makeText(applicationContext, "Please fill the details", Toast.LENGTH_SHORT).show()
         }
+    }
+
+    private fun clearCredentials(){
+        etName.text.clear()
+        etAge.text.clear()
+        etMobileNumber.text.clear()
+        etEmailId.text.clear()
     }
 }

@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.mvvmdemo.Model.User
 import com.example.mvvmdemo.R
 
-class UserAdapter(private val context: Context, private var userList: ArrayList<User>) :
+class UserAdapter(private var userList: ArrayList<User>) :
     RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
@@ -19,10 +19,10 @@ class UserAdapter(private val context: Context, private var userList: ArrayList<
 
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
         val user: User = userList[position]
-        holder.userName.text = user.name
-        holder.userAge.text = user.age.toString()
-        holder.userMobileNumber.text = user.mobileNumber.toString()
-        holder.userEmailId.text = user.emailId
+        holder.userName.text = "Name:- ${user.name}"
+        holder.userAge.text = "Age:- ${user.age}"
+        holder.userMobileNumber.text = "Mobile No. :- ${user.mobileNumber}"
+        holder.userEmailId.text = "Email:- ${user.emailId}"
     }
 
     fun setData(userList: ArrayList<User>){

@@ -12,7 +12,7 @@ class UserRepository  {
 
     companion object {
         private var userDatabase: UserDatabase?=null
-        fun initializeDB(context: Context): UserDatabase? {
+        private fun initializeDB(context: Context): UserDatabase? {
             return UserDatabase.getInstance(context)
         }
 
